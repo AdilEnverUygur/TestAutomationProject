@@ -1,10 +1,14 @@
+
 #Test Automation Project
 
 ##Purpose & Background
 
 to be able to start  testing  all the modules that this plan contains,  the project test plan should be created and the Application should be deployed to the QA environment
+
 ##Test Strategy (Manual test, Automated test)
+
 I did both automation tests and manual tests also  follow Agile methodology in this project
+
 ##Requirements
 
 ###Public Module
