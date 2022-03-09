@@ -7,7 +7,7 @@ to be able to start  testing  all the modules that this plan contains,  the proj
 
 ## Test Strategy (Manual test, Automated test)
 
-I did both automation tests and manual tests also  follow Agile methodology in this project
+I will do both automation tests and manual tests also  follow Agile methodology in this project
 
 ## Requirements
 
