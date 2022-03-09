@@ -32,7 +32,8 @@ import java.util.List;
 
 public class TestUtility {
     //time out data
-    private int timeOut = Integer.parseInt(ConfigurationReader.get("timeout"));
+    private int timeOut = Integer.parseInt(ConfigurationReader.getDataFromPropertiesFile(
+            "config.properties","timeout"));
 
     WebDriver driver;
     public TestUtility(WebDriver driver){

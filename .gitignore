@@ -25,4 +25,4 @@ hs_err_pid*
 .idea/libraries
 
 # properties file
-scretData.properties
+config.properties

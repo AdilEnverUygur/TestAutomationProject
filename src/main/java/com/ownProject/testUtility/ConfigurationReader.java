@@ -2,26 +2,25 @@ package com.ownProject.testUtility;
 
 import java.io.FileInputStream;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigurationReader {
-    private static Properties properties;
-
-    static {
+    public static String getDataFromPropertiesFile(String fileName,String key){
+        Properties properties=new Properties();
+        FileInputStream fileInputStream= null;
         try {
-            String path = "config.properties";
-            FileInputStream input = new FileInputStream(path);
-            properties = new Properties();
-            properties.load(input);
-
-            input.close();
+            fileInputStream = new FileInputStream(fileName);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            properties.load(fileInputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-    }
-    public static String get(String keyName){
-        return properties.getProperty(keyName);
+        String value=properties.getProperty(key);
+        return value;
     }
 }
