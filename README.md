@@ -1,10 +1,14 @@
 #Test Automation Project
+
 ##Purpose & Background
+
 to be able to start  testing  all the modules that this plan contains,  the project test plan should be created and the Application should be deployed to the QA environment
 ##Test Strategy (Manual test, Automated test)
 I did both automation tests and manual tests also  follow Agile methodology in this project
 ##Requirements
+
 ###Public Module
+
 •A user should be able to create an account
 
 •A user should be able to add products to the shopping cart
@@ -16,7 +20,9 @@ I did both automation tests and manual tests also  follow Agile methodology in t
 •A user should be able to view his/her downloadable orders
 
 •A user should be able to view My wish list
+
 ###Customer Module
+
 •Customer Manager can add a new customer 
 
 •Customer Manager can update an existing customer 
@@ -24,7 +30,9 @@ I did both automation tests and manual tests also  follow Agile methodology in t
 •Customer Manager can delete an existing customer 
 
 •Customer Manager can add a new address for a customer 
+
 ###Catalog Module 
+
 •Catalog Manager can add products 
 
 •Catalog Manager can edit products 
