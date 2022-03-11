@@ -61,7 +61,7 @@ public class TestBase {
 
 
     public static boolean useHeadless(){
-        return Integer.parseInt(ConfigurationReader.getDataFromPropertiesFile(configFile,"headlessMode")) == 1;
+        return Integer.parseInt(ConfigurationReader.getDataFromPropertiesFile(configFile,"headLessMode")) == 1;
     }
 
     public static void closeBrowser(){
