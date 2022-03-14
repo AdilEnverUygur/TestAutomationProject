@@ -1,6 +1,7 @@
 package com.ownProject.regression.testNG;
 
 import com.ownProject.frontEnd.CreateAnAccount;
+import com.ownProject.frontEnd.DownloadableProduct;
 import com.ownProject.frontEnd.LoginPage;
 import com.ownProject.frontEnd.ViewOrders;
 import com.ownProject.testUtility.TestBase;
@@ -13,6 +14,7 @@ public class PublicModule extends TestBase {
     CreateAnAccount createAnAccount;
     LoginPage loginPage;
     ViewOrders viewOrders;
+    DownloadableProduct product;
 
     @BeforeClass(alwaysRun = true)
     public void setUp(){
@@ -40,6 +42,13 @@ public class PublicModule extends TestBase {
         viewOrders = new ViewOrders(driver);
         viewOrders.clickOnMyOrderLink();
         Assert.assertTrue(viewOrders.verifySuccessMessage());
+    }
+
+    @Test
+    public void userShouldBeAbleToViewDownloadableProduct(){
+        product = new DownloadableProduct(driver);
+        product.clickDownloadAbleProduct();
+        Assert.assertTrue(product.verifySuccessMessage());
     }
 
     @AfterMethod(alwaysRun = true)

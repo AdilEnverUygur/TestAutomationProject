@@ -17,7 +17,7 @@ I will do both automation tests and manual tests also  follow Agile methodology 
 
 •A user should be able to view his/her orders
 
-•A user should be able to view his/her downloadable orders
+•A user should be able to view his/her downloadable products
 
 •A user should be able to view My wish list
 
