@@ -1,9 +1,6 @@
 package com.ownProject.regression.testNG;
 
-import com.ownProject.frontEnd.CreateAnAccount;
-import com.ownProject.frontEnd.DownloadableProduct;
-import com.ownProject.frontEnd.LoginPage;
-import com.ownProject.frontEnd.ViewOrders;
+import com.ownProject.frontEnd.*;
 import com.ownProject.testUtility.TestBase;
 import com.ownProject.testUtility.TestUtility;
 import org.testng.Assert;
@@ -15,6 +12,7 @@ public class PublicModule extends TestBase {
     LoginPage loginPage;
     ViewOrders viewOrders;
     DownloadableProduct product;
+    MyWishList myWishList;
 
     @BeforeClass(alwaysRun = true)
     public void setUp(){
@@ -27,6 +25,7 @@ public class PublicModule extends TestBase {
         loginPage.publicModuleLogin(properties.getProperty("userName"),properties.getProperty("userPassword"));
     }
 
+    // 1.A user should be able to create an account
     @Test
     public void userShouldBeAbleToCreateAnAccount(){
         testUtility = new TestUtility(driver);
@@ -37,6 +36,7 @@ public class PublicModule extends TestBase {
         Assert.assertTrue(createAnAccount.verifyAccountCreated());
     }
 
+    // 2.A user should be able to view his/her orders
     @Test
     public void userShouldBeAbleToViewHisOrder(){
         viewOrders = new ViewOrders(driver);
@@ -44,11 +44,26 @@ public class PublicModule extends TestBase {
         Assert.assertTrue(viewOrders.verifySuccessMessage());
     }
 
+    // 3.A user should be able to view his/her downloadable products
     @Test
     public void userShouldBeAbleToViewDownloadableProduct(){
         product = new DownloadableProduct(driver);
         product.clickDownloadAbleProduct();
         Assert.assertTrue(product.verifySuccessMessage());
+    }
+
+    // 4.A user should be able to view My wish list
+    @Test
+    public void userShouldBeAbleToViewMyWishList(){
+        myWishList = new MyWishList(driver);
+        myWishList.clickMyWishListLink();
+        Assert.assertTrue(myWishList.verifyMyWishListIsDisplayed());
+    }
+
+    //5. A user should be able to change password
+    @Test
+    public void userShouldBeAbleToChangePassword(){
+
     }
 
     @AfterMethod(alwaysRun = true)
