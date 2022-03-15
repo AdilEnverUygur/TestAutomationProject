@@ -13,6 +13,7 @@ public class PublicModule extends TestBase {
     ViewOrders viewOrders;
     DownloadableProduct product;
     MyWishList myWishList;
+    ChangePassword changePassword;
 
     @BeforeClass(alwaysRun = true)
     public void setUp(){
@@ -63,7 +64,10 @@ public class PublicModule extends TestBase {
     //5. A user should be able to change password
     @Test
     public void userShouldBeAbleToChangePassword(){
-
+        changePassword = new ChangePassword(driver);
+        changePassword.changePassword(properties.getProperty("userPassword"),
+                properties.getProperty("userNewPassword"),properties.getProperty("userNewPassword"));
+        Assert.assertTrue(changePassword.verifyChangePassword());
     }
 
     @AfterMethod(alwaysRun = true)
