@@ -20,14 +20,14 @@ public class PublicModule extends TestBase {
         initialization("frontEndUrl");
     }
 
-    @BeforeMethod(alwaysRun = true)
-    public void login(){
-        loginPage = new LoginPage(driver);
-        loginPage.publicModuleLogin(properties.getProperty("userName"),properties.getProperty("userPassword"));
-    }
+//    @BeforeMethod()
+//    public void login(){
+//        loginPage = new LoginPage(driver);
+//        loginPage.publicModuleLogin(properties.getProperty("userName"),properties.getProperty("userPassword"));
+//    }
 
     // 1.A user should be able to create an account
-    @Test
+    @Test(priority = 1)
     public void userShouldBeAbleToCreateAnAccount(){
         testUtility = new TestUtility(driver);
         createAnAccount = new CreateAnAccount(driver);
@@ -38,32 +38,40 @@ public class PublicModule extends TestBase {
     }
 
     // 2.A user should be able to view his/her orders
-    @Test
+    @Test(priority = 2)
     public void userShouldBeAbleToViewHisOrder(){
+        loginPage = new LoginPage(driver);
+        loginPage.publicModuleLogin(properties.getProperty("userName"),properties.getProperty("userPassword"));
         viewOrders = new ViewOrders(driver);
         viewOrders.clickOnMyOrderLink();
         Assert.assertTrue(viewOrders.verifySuccessMessage());
     }
 
     // 3.A user should be able to view his/her downloadable products
-    @Test
+    @Test(priority = 3)
     public void userShouldBeAbleToViewDownloadableProduct(){
+        loginPage = new LoginPage(driver);
+        loginPage.publicModuleLogin(properties.getProperty("userName"),properties.getProperty("userPassword"));
         product = new DownloadableProduct(driver);
         product.clickDownloadAbleProduct();
         Assert.assertTrue(product.verifySuccessMessage());
     }
 
     // 4.A user should be able to view My wish list
-    @Test
+    @Test(priority = 4)
     public void userShouldBeAbleToViewMyWishList(){
+        loginPage = new LoginPage(driver);
+        loginPage.publicModuleLogin(properties.getProperty("userName"),properties.getProperty("userPassword"));
         myWishList = new MyWishList(driver);
         myWishList.clickMyWishListLink();
         Assert.assertTrue(myWishList.verifyMyWishListIsDisplayed());
     }
 
     //5. A user should be able to change password
-    @Test
+    @Test(priority = 5)
     public void userShouldBeAbleToChangePassword(){
+        loginPage = new LoginPage(driver);
+        loginPage.publicModuleLogin(properties.getProperty("userName"),properties.getProperty("userPassword"));
         changePassword = new ChangePassword(driver);
         changePassword.changePassword(properties.getProperty("userPassword"),
                 properties.getProperty("userNewPassword"),properties.getProperty("userNewPassword"));

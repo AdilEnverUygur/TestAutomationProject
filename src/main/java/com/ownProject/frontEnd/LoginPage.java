@@ -13,6 +13,9 @@ public class LoginPage {
     @FindBy(css = ".account-cart-wrapper>a")
     WebElement accountLink;
 
+    @FindBy(xpath = "//a[contains(text(),'Log In')]")
+    WebElement loginLink;
+
     @FindBy(id = "email")
     WebElement emailAddress;
 
@@ -34,6 +37,16 @@ public class LoginPage {
         testUtility = new TestUtility(driver);
     }
 
+    public void clickAccountLink(){
+        testUtility.waitForElementPresent(accountLink);
+        accountLink.click();
+    }
+
+    public void clickLoginLink(){
+        testUtility.waitForElementPresent(loginLink);
+        loginLink.click();
+    }
+
     public void enterEmail(String email){
         testUtility.waitForElementPresent(emailAddress);
         emailAddress.sendKeys(email);
@@ -51,6 +64,8 @@ public class LoginPage {
 
 
     public void publicModuleLogin(String email,String password){
+        clickAccountLink();
+        clickLoginLink();
         enterEmail(email);
         enterPassword(password);
         clickOnLoginButton();
