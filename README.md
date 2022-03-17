@@ -76,7 +76,7 @@ I will do both automation tests and manual tests also  follow Agile methodology 
 •Sales Manager should be able to manage (create, update and cancel)  orders 
 
 •Sales Manager should be able to view invoices and add comments to invoice history 
-###Reporting Module
+### Reporting Module
 •Reporting Manager should be able to see  Sales - Total Ordered Report
 
 •Reporting Manager should be able to see Shopping Cart - Abandoned carts Report
