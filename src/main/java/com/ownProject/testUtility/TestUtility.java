@@ -22,6 +22,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.*;
@@ -115,6 +116,12 @@ public class TestUtility {
     //Generate Random Password
     public static String generateRandomPassword(){
         return RandomStringUtils.randomAlphabetic(8);
+    }
+
+    //Select Dropdown Value
+    public static void selectDropdownValue(WebElement element,String value){
+        Select byValue = new Select(element);
+        byValue.selectByValue(value);
     }
 
 
