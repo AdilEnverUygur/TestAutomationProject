@@ -17,10 +17,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -67,6 +64,25 @@ public class TestUtility {
         WebDriverWait wait = new WebDriverWait(driver,timeOut);
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
+
+    //Retrying Find Click Function
+    public boolean retryingFindClick(WebElement element){
+        waitForElementClickable(element);
+        boolean result = false;
+        int attempts = 0;
+        while (attempts < 2){
+            try {
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].click()",element);
+                result = true;
+                break;
+            } catch (StaleElementReferenceException e){
+                e.printStackTrace();
+            }
+            attempts ++;
+        }
+        return result;
+   }
 
     //*********Generate Random Data Using Java Faker***********
     public static String generateFakeTitle(){
