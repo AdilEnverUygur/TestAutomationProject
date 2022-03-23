@@ -84,6 +84,12 @@ public class TestUtility {
         return result;
    }
 
+   //Scroll Down Function
+    public void scrollDown(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,2000)");
+    }
+
     //*********Generate Random Data Using Java Faker***********
     public static String generateFakeTitle(){
         Faker faker = new Faker();
