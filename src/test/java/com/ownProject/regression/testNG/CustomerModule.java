@@ -3,6 +3,7 @@ package com.ownProject.regression.testNG;
 import com.ownProject.backEnd.BackEndLogin;
 import com.ownProject.backEnd.customerModule.AddNewCustomer;
 import com.ownProject.backEnd.customerModule.CustomerDashboardPage;
+import com.ownProject.backEnd.customerModule.UpdateExistingCustomer;
 import com.ownProject.testUtility.TestBase;
 import com.ownProject.testUtility.TestUtility;
 import org.testng.Assert;
@@ -13,6 +14,7 @@ public class CustomerModule extends TestBase {
     CustomerDashboardPage customerDashboardPage;
     TestUtility testUtility;
     AddNewCustomer addNewCustomer;
+    UpdateExistingCustomer updateExistingCustomer;
 
 
     @BeforeClass(alwaysRun = true)
@@ -33,6 +35,16 @@ public class CustomerModule extends TestBase {
         addNewCustomer = new AddNewCustomer(driver);
         addNewCustomer.addNewCustomer();
         Assert.assertTrue(addNewCustomer.verifyAddNewCustomerSuccessfully());
+    }
+
+    //2.Customer Manager can update an existing customer
+    @Test(dependsOnMethods = "customerManagerCanAddNewCustomer")
+    public void customerManagerCanUpdateExistingCustomer(){
+        addNewCustomer = new AddNewCustomer(driver);
+        addNewCustomer.clickOnFilteredCustomer();
+        updateExistingCustomer = new UpdateExistingCustomer(driver);
+        updateExistingCustomer.updateCustomerInfo();
+        Assert.assertTrue(updateExistingCustomer.verifyUpdateCustomerSuccessfully());
     }
 
     @AfterMethod(alwaysRun = true)
