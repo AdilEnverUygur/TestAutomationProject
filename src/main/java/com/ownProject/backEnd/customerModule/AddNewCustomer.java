@@ -2,10 +2,15 @@ package com.ownProject.backEnd.customerModule;
 
 import com.ownProject.testUtility.TestBase;
 import com.ownProject.testUtility.TestUtility;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class AddNewCustomer extends TestBase{
     WebDriver driver;
@@ -29,6 +34,14 @@ public class AddNewCustomer extends TestBase{
     WebElement saveCustomerButton;
     @FindBy(xpath = "//span[contains(text(),'The customer has been saved.')]")
     WebElement addCustomerSuccessMessage;
+    @FindAll(
+            @FindBy(xpath = "//table[@id='customerGrid_table']/tbody/tr")
+    )
+    List<WebElement> customerLists;
+    @FindBy(id = "customerGrid_filter_name" )
+    WebElement nameFilterField;
+    @FindBy(xpath = "//table[@id='customerGrid_table']/tbody/tr")
+    WebElement filteredCustomer;
 
     public AddNewCustomer(WebDriver driver){
         this.driver = driver;
@@ -93,5 +106,28 @@ public class AddNewCustomer extends TestBase{
         fillEmailField(TestUtility.randomEmailAddress());
         fillPasswordField(TestUtility.generateRandomPassword());
         clickOnSaveButton();
+    }
+
+    public void clickOnSpecificCustomer(){
+        String beforeXpath = "//table[@id='customerGrid_table']/tbody/tr[";
+        String afterXpath = "]/td[3]";
+        System.out.println("Customer Name is : " + customerName);
+        System.out.println("Customer List Size: " + customerLists.size());
+        for (int i = 1;i <= customerLists.size();i++){
+            String customerText = driver.findElement(By.xpath(beforeXpath + i + afterXpath)).getText();
+            if (customerText.contains(customerName)){
+                WebElement specificCustomer = driver.findElement(By.xpath(beforeXpath + i + afterXpath));
+                specificCustomer.click();
+                break;
+            }
+        }
+    }
+
+    public void clickOnFilteredCustomer(){
+        testUtility.waitForElementPresent(nameFilterField);
+        nameFilterField.sendKeys(customerName + Keys.ENTER);
+        driver.navigate().refresh();
+        testUtility.waitForElementPresent(filteredCustomer);
+        filteredCustomer.click();
     }
 }
