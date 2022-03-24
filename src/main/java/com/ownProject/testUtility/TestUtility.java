@@ -118,7 +118,7 @@ public class TestUtility {
 
     public static String generateFakeNumber(){
         Faker faker = new Faker();
-        return faker.phoneNumber().subscriberNumber();
+        return faker.phoneNumber().phoneNumber();
     }
 
     //*****************************************************
