@@ -1,10 +1,7 @@
 package com.ownProject.regression.testNG;
 
 import com.ownProject.backEnd.BackEndLogin;
-import com.ownProject.backEnd.customerModule.AddNewCustomer;
-import com.ownProject.backEnd.customerModule.CustomerDashboardPage;
-import com.ownProject.backEnd.customerModule.DeleteExistingCustomer;
-import com.ownProject.backEnd.customerModule.UpdateExistingCustomer;
+import com.ownProject.backEnd.customerModule.*;
 import com.ownProject.testUtility.TestBase;
 import com.ownProject.testUtility.TestUtility;
 import org.testng.Assert;
@@ -17,6 +14,7 @@ public class CustomerModule extends TestBase {
     AddNewCustomer addNewCustomer;
     UpdateExistingCustomer updateExistingCustomer;
     DeleteExistingCustomer deleteExistingCustomer;
+    AddNewAddress addNewAddress;
 
 
     @BeforeClass(alwaysRun = true)
@@ -56,6 +54,14 @@ public class CustomerModule extends TestBase {
         deleteExistingCustomer.enterDeleteCustomerPage();
         deleteExistingCustomer.clickDeleteCustomerIcon();
         Assert.assertTrue(deleteExistingCustomer.verifyDeleteCustomer());
+    }
+
+    //4.Customer Manager can add a new address for a customer
+    @Test
+    public void customerManagerCanAddNewAddress(){
+        addNewAddress = new AddNewAddress(driver);
+        addNewAddress.addNewAddressFunction();
+        Assert.assertTrue(addNewAddress.verifySaveCustomerIsSuccess());
     }
 
     @AfterMethod(alwaysRun = true)
