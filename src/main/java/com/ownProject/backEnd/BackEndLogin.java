@@ -19,7 +19,7 @@ public class BackEndLogin {
     @FindBy(css = "input[class='form-button']")
     WebElement loginButton;
 
-    @FindBy(xpath = "//a[contains(text(),'Log Out')]")
+    @FindBy(css = ".link-logout")
     WebElement logoutButton;
 
     public BackEndLogin(WebDriver driver){
