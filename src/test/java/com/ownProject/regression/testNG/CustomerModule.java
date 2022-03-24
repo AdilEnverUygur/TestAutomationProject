@@ -3,6 +3,7 @@ package com.ownProject.regression.testNG;
 import com.ownProject.backEnd.BackEndLogin;
 import com.ownProject.backEnd.customerModule.AddNewCustomer;
 import com.ownProject.backEnd.customerModule.CustomerDashboardPage;
+import com.ownProject.backEnd.customerModule.DeleteExistingCustomer;
 import com.ownProject.backEnd.customerModule.UpdateExistingCustomer;
 import com.ownProject.testUtility.TestBase;
 import com.ownProject.testUtility.TestUtility;
@@ -15,6 +16,7 @@ public class CustomerModule extends TestBase {
     TestUtility testUtility;
     AddNewCustomer addNewCustomer;
     UpdateExistingCustomer updateExistingCustomer;
+    DeleteExistingCustomer deleteExistingCustomer;
 
 
     @BeforeClass(alwaysRun = true)
@@ -45,6 +47,15 @@ public class CustomerModule extends TestBase {
         updateExistingCustomer = new UpdateExistingCustomer(driver);
         updateExistingCustomer.updateCustomerInfo();
         Assert.assertTrue(updateExistingCustomer.verifyUpdateCustomerSuccessfully());
+    }
+
+    //3.Customer Manager can delete an existing customer
+    @Test
+    public void customerManagerCanDeleteAnExistingCustomer(){
+        deleteExistingCustomer = new DeleteExistingCustomer(driver);
+        deleteExistingCustomer.enterDeleteCustomerPage();
+        deleteExistingCustomer.clickDeleteCustomerIcon();
+        Assert.assertTrue(deleteExistingCustomer.verifyDeleteCustomer());
     }
 
     @AfterMethod(alwaysRun = true)
