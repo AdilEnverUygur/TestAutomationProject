@@ -84,6 +84,12 @@ public class TestUtility {
         return result;
    }
 
+   //Send Keys By JS
+    public void sendKeysByJS(WebElement element,String text){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].value='" + text + "'", element);
+    }
+
    //Scroll Down Function
     public void scrollDown(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
