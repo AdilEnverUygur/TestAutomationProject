@@ -23,10 +23,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class TestUtility {
     //time out data
@@ -130,6 +127,15 @@ public class TestUtility {
     public static String generateFakeSubscriberNumber(){
         Faker faker = new Faker();
         return faker.phoneNumber().subscriberNumber();
+    }
+
+    public static String generateLowerAlphaNumericCode(int length){
+        String chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+        Random random = new Random();
+        StringBuilder stringBuilder = new StringBuilder(length);
+        for (int i = 0;i < length;i++)
+            stringBuilder.append(chars.charAt(random.nextInt(chars.length())));
+            return stringBuilder.toString();
     }
 
     //*****************************************************
