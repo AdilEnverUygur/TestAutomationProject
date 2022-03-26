@@ -127,6 +127,11 @@ public class TestUtility {
         return faker.phoneNumber().phoneNumber();
     }
 
+    public static String generateFakeSubscriberNumber(){
+        Faker faker = new Faker();
+        return faker.phoneNumber().subscriberNumber();
+    }
+
     //*****************************************************
 
     //Generate Random Email Address
