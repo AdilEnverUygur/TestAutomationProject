@@ -38,5 +38,10 @@ public class CatalogDashboardPage {
         return logoutButton.isDisplayed();
     }
 
-
+    public void logOut(){
+        testUtility.waitForElementPresent(logoutButton);
+        testUtility.sleep(3);
+        testUtility.retryingFindClick(logoutButton);
+        System.out.println("Logged Out");
+    }
 }
