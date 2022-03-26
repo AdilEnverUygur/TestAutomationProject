@@ -64,5 +64,28 @@ public class ManageProductPage {
         submitButton.click();
     }
 
+    public void editProduct(){
+        testUtility.waitForElementPresent(firstProductRow);
+        firstProductRow.click();
+        testUtility.waitForElementPresent(descriptionArea);
+        descriptionArea.clear();
+        String description = "The product is very good";
+        descriptionArea.sendKeys(description);
+        testUtility.waitForElementPresent(skuTextBox);
+        skuTextBox.clear();
+        skuTextBox.sendKeys(TestUtility.generateLowerAlphaNumericCode(8));
+        testUtility.waitForElementPresent(saveButton);
+        saveButton.clear();
+    }
 
+    public boolean verifyEditingProductSuccessfully(){
+        testUtility.waitForElementPresent(editingSuccessMessage);
+        String editingMS = "The product has been saved.";
+        if (editingSuccessMessage.getText().equalsIgnoreCase(editingMS)){
+            System.out.println(editingMS);
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
