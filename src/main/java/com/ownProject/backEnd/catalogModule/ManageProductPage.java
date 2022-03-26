@@ -32,6 +32,8 @@ public class ManageProductPage {
     WebElement saveButton;
     @FindBy(id = "messages")
     WebElement editingSuccessMessage;
+    @FindBy(css = "li.success-msg")
+    WebElement deleteSuccessMessage;
 
     public ManageProductPage(WebDriver driver){
         this.driver = driver;
@@ -87,5 +89,23 @@ public class ManageProductPage {
         }else {
             return false;
         }
+    }
+
+    public void deleteExistingProduct(String existingProductName){
+        fillNameField(existingProductName);
+        clickSearchButton();
+        testUtility.sleep(3);
+        testUtility.waitForElementPresent(firstProductInTable);
+        firstProductInTable.click();
+        selectActionDropdownList("delete");
+        clickOnSubmitButton();
+        testUtility.waitForAlertPresent();
+        driver.switchTo().alert().accept();
+        driver.switchTo().defaultContent();
+    }
+
+    public boolean verifyDeleteSuccessMessage(){
+        testUtility.waitForElementPresent(deleteSuccessMessage);
+        return deleteSuccessMessage.isDisplayed();
     }
 }

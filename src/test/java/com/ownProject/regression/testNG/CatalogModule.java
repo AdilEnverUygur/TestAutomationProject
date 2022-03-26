@@ -18,6 +18,7 @@ public class CatalogModule extends TestBase {
     ManageProductPage manageProductPage;
     NewProductPage newProductPage;
     ProductInformationPage productInformationPage;
+    public String captureName;
 
 
     @BeforeClass(alwaysRun = true)
@@ -52,6 +53,23 @@ public class CatalogModule extends TestBase {
         manageProductPage = new ManageProductPage(driver);
         manageProductPage.editProduct();
         Assert.assertTrue(manageProductPage.verifyEditingProductSuccessfully());
+    }
+
+    //3.Catalog Manager can delete products
+    @Test
+    public void catalogManagerCanDeleteProducts(){
+        manageProductPage = new ManageProductPage(driver);
+        manageProductPage.clickAddProductButton();
+        newProductPage = new NewProductPage(driver);
+        newProductPage.clickContinueButton();
+        captureName = TestUtility.generateFakeFirstName();
+        productInformationPage = new ProductInformationPage(driver);
+        productInformationPage.fillNewProductInfo(captureName,TestUtility.generateFakeFirstName(),
+                TestUtility.generateFakeLastName(),TestUtility.generateFakeSubscriberNumber(),TestUtility.generateFakeFirstName(),
+                "1","2",TestUtility.generateFakeSubscriberNumber(),"6");
+        Assert.assertTrue(productInformationPage.verifyProductAdded());
+        manageProductPage.deleteExistingProduct(captureName);
+        Assert.assertTrue(manageProductPage.verifyDeleteSuccessMessage());
     }
 
 
