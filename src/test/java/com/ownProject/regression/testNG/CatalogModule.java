@@ -46,6 +46,14 @@ public class CatalogModule extends TestBase {
 
     }
 
+    //2.Catalog Manager can edit products
+    @Test
+    public void catalogManagerCanEditProducts(){
+        manageProductPage = new ManageProductPage(driver);
+        manageProductPage.editProduct();
+        Assert.assertTrue(manageProductPage.verifyEditingProductSuccessfully());
+    }
+
 
     @AfterMethod(alwaysRun = true)
     public void logout(){

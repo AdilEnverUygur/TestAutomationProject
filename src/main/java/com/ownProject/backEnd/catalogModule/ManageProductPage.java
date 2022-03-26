@@ -75,7 +75,7 @@ public class ManageProductPage {
         skuTextBox.clear();
         skuTextBox.sendKeys(TestUtility.generateLowerAlphaNumericCode(8));
         testUtility.waitForElementPresent(saveButton);
-        saveButton.clear();
+        saveButton.click();
     }
 
     public boolean verifyEditingProductSuccessfully(){
