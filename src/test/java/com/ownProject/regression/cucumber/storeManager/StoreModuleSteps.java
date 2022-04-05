@@ -1,6 +1,5 @@
 package com.ownProject.regression.cucumber.storeManager;
 
-import com.ownProject.backEnd.BackEndLogin;
 import com.ownProject.backEnd.storeModule.StoreManagerLogin;
 import com.ownProject.testUtility.TestBase;
 import io.cucumber.java.en.Given;
@@ -8,9 +7,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class StoreModuleSteps extends TestBase {
-    BackEndLogin backEndLogin;
     static StoreManagerLogin storeManagerLogin;
 
+    //Background
     @Given("manager is on Login page")
     public void managerIsOnLoginPage() {
         storeManagerLogin = new StoreManagerLogin(driver);
