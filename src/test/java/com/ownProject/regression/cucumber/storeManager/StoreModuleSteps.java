@@ -1,6 +1,6 @@
 package com.ownProject.regression.cucumber.storeManager;
 
-import com.ownProject.backEnd.storeModule.StoreManagerLogin;
+import com.ownProject.backEnd.storeModule.*;
 import com.ownProject.testUtility.TestBase;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

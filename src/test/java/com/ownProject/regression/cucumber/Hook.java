@@ -6,14 +6,16 @@ import io.cucumber.java.Before;
 
 public class Hook extends TestBase {
 
-    @Before
+    @Before("not @APIFeature")
     public void setUp(){
         System.out.println("Hook Set up");
         initialization("backEndUrl");
     }
 
-    @After
+    @After("not @APIFeature")
     public void tearDown(){
-       closeBrowser();
+        driver.close();
+        driver.quit();
+        driver=null;
     }
 }
